@@ -21,26 +21,26 @@ export const whyUs = {
     {
       title: "Beyond the Exam",
       body: "Build knowledge, confidence, and skills for life at sea — not just a score.",
-    },
-    {
-      title: "Built for Aspirants",
-      body: "A focused community of Merchant Navy aspirants preparing and progressing together.",
+      image: "/assets/why-seapath-learning.png",
+      imageAlt: "Aspirants preparing with focused study",
     },
     {
       title: "Maritime Mentors",
       body: "Learn from educators and professionals who bring real industry insight into class.",
+      image: "/assets/why-seapath-mentors.png",
+      imageAlt: "Maritime mentor guiding an aspirant on deck",
     },
     {
       title: "Results That Speak",
       body: "Strong IMUCET ranks and sponsorship pathways from focused, structured prep.",
-    },
-    {
-      title: "Structured Learning",
-      body: "Live classes, recordings, practice material, and mocks in one clear path.",
+      image: "/assets/why-seapath-career.png",
+      imageAlt: "Merchant ship at sea — career outcomes",
     },
     {
       title: "One Platform. Every Step.",
-      body: "From IMUCET and DNS prep to interviews and sponsorship guidance.",
+      body: "From IMUCET and DNS prep to interviews and sponsorship guidance — in one place.",
+      image: "/assets/why-seapath-main.png",
+      imageAlt: "Ship bridge — complete pathway to sea",
     },
   ],
 };
@@ -49,6 +49,7 @@ export const homeResults = {
   title: "Where preparation meets opportunity",
   subtitle:
     "From IMUCET ranks to sponsorship selections — ambition turning into real careers at sea.",
+  backgroundImage: "/assets/results-celebration-bg.png",
   items: [
     { name: "Akash Kumar", detail: "AIR 1 · IMU-CET 2026" },
     { name: "Prithveesh Purohit", detail: "AIR 37 · IMU-CET 2026" },
@@ -61,11 +62,10 @@ export const homeResults = {
 
 export const partners = {
   eyebrow: "Industry network",
-  title: "Associated with 20+ sponsorship companies",
+  titleBefore: "Associated with 20+ ",
+  titleHighlight: "sponsorship companies",
   subtitle:
     "Where our students begin their careers — from sponsorship selections to placements with leading names in the maritime industry.",
-  countLabel: "20+",
-  countCaption: "Shipping & sponsorship partners",
   companies: [
     "Anglo-Eastern",
     "Maersk",
@@ -99,18 +99,21 @@ export const homeTestimonials = {
         "Regular tests, mock interviews, and personal guidance made the difference. If you're serious about Merchant Navy, this is the path.",
       name: "Harsh Vardhan",
       role: "Sponsored · Anglo-Eastern",
+      image: "/assets/story-harsh.png",
     },
     {
       quote:
         "After 12th, I discovered Merchant Navy and prepared for IMU-CET, sponsorship exams, and interviews. The mocks and mentorship were crucial.",
       name: "Charu Bhardwaj",
       role: "Sponsored · Synergy Group",
+      image: "/assets/story-charu.png",
     },
     {
       quote:
         "Industry-aware faculty, realistic mocks, and clear guidance. I walked into exams ready — and into a career at sea.",
       name: "Shrishti Yadav",
       role: "AIR 99 · Anglo-Eastern",
+      image: "/assets/story-shrishti.png",
     },
   ],
 };
@@ -172,6 +175,8 @@ export const followAlong = {
   eyebrow: "Follow along",
   title: "Merchant Navy insights, every day",
   subtitle: "Stay informed with SeaPath on YouTube and Instagram.",
+  centerImage: "/assets/follow-learning.png",
+  centerImageAlt: "SeaPath learning platform — study for Merchant Navy with live courses and LMS",
   channels: [
     {
       platform: "YouTube",

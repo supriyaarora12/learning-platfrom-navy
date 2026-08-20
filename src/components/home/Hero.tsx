@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { homeHero } from "@/content/home";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
@@ -28,10 +29,18 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-panel-enter relative hidden min-h-[380px] lg:block" aria-hidden>
+        <div className="hero-panel-enter relative hidden min-h-[420px] lg:block">
           <div className="absolute inset-0 rounded-tl-[4rem] rounded-br-[4rem] bg-gradient-to-br from-white/10 via-white/5 to-transparent ring-1 ring-white/15" />
-          <div className="absolute inset-6 overflow-hidden rounded-tl-[3rem] rounded-br-[3rem]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(232,197,71,0.35),transparent_45%),radial-gradient(circle_at_70%_80%,rgba(20,51,92,0.9),transparent_50%),linear-gradient(160deg,#0b1f3a,#14335c)]" />
+          <div className="absolute inset-6 overflow-hidden rounded-tl-[3rem] rounded-br-[3rem] ring-1 ring-white/10">
+            <Image
+              src="/assets/hero-merchant-navy.png"
+              alt="Merchant Navy cargo ship at sea — SeaPath coaching journey"
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 1024px) 0px, 480px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy/35 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-soft">
                 Learn · Practice · Prove

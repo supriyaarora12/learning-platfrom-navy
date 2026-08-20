@@ -33,10 +33,16 @@ export function CourseCatalog() {
   }, [active, query]);
 
   const featured = courses.filter((c) => c.featured);
+  // Duplicate for seamless vertical loop
+  const featuredLoop = [...featured, ...featured];
+
+  function pickCategory(key: CourseCategory) {
+    setActive(key);
+    document.getElementById("all-courses")?.scrollIntoView({ behavior: "smooth" });
+  }
 
   return (
     <div className="space-y-14">
-      {/* Trending — Croma-style quick jumps */}
       <Reveal>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">
@@ -56,68 +62,96 @@ export function CourseCatalog() {
         </div>
       </Reveal>
 
-      {/* Discover categories */}
-      <div>
-        <Reveal>
-          <h3 className="font-display text-2xl text-navy">Discover top categories</h3>
-          <p className="mt-1 text-sm text-muted">Jump into the track that matches your goal.</p>
+      {/* Discover (left vertical) + Master programmes auto-scroll (right) */}
+      <div className="grid items-start gap-8 lg:grid-cols-[minmax(220px,280px)_1fr] lg:gap-10">
+        <Reveal variant="left">
+          <aside className="lg:sticky lg:top-28">
+            <h3 className="font-display text-2xl text-navy sm:text-3xl">Discover top categories</h3>
+            <p className="mt-1 text-sm text-muted">Jump into the track that matches your goal.</p>
+
+            <div className="mt-5 flex flex-col gap-3">
+              {coursesPage.categories.map((cat) => {
+                const on = active === cat.key;
+                return (
+                  <button
+                    key={cat.key}
+                    type="button"
+                    onClick={() => pickCategory(cat.key)}
+                    className={`w-full rounded-2xl border px-4 py-4 text-left transition ${
+                      on
+                        ? "border-navy bg-navy text-white shadow-[0_16px_36px_-20px_rgba(11,31,58,0.55)]"
+                        : "border-line bg-white hover:border-navy/30 hover:shadow-[0_14px_30px_-22px_rgba(11,31,58,0.35)]"
+                    }`}
+                  >
+                    <p className={`font-display text-lg ${on ? "text-white" : "text-navy"}`}>
+                      {cat.title}
+                    </p>
+                    <p className={`mt-1 text-xs leading-relaxed ${on ? "text-white/70" : "text-muted"}`}>
+                      {cat.body}
+                    </p>
+                  </button>
+                );
+              })}
+            </div>
+          </aside>
         </Reveal>
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {coursesPage.categories.map((cat, i) => (
-            <Reveal key={cat.key} delay={i * 70}>
+
+        <div className="min-w-0">
+          <Reveal>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+                  Master programmes
+                </p>
+                <h3 className="mt-2 font-display text-2xl text-navy sm:text-3xl">
+                  High-impact career tracks
+                </h3>
+              </div>
               <button
                 type="button"
                 onClick={() => {
-                  setActive(cat.key);
+                  setActive("All");
                   document.getElementById("all-courses")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className={`w-full rounded-xl border px-4 py-4 text-left transition ${
-                  active === cat.key
-                    ? "border-navy bg-navy text-white"
-                    : "border-line bg-white hover:border-navy/30"
-                }`}
+                className="text-sm font-semibold text-navy underline decoration-gold decoration-2 underline-offset-4"
               >
-                <p className={`font-display text-lg ${active === cat.key ? "text-white" : "text-navy"}`}>
-                  {cat.title}
-                </p>
-                <p className={`mt-1 text-xs ${active === cat.key ? "text-white/70" : "text-muted"}`}>
-                  {cat.body}
-                </p>
+                View full catalogue
               </button>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-
-      {/* Master / featured programmes */}
-      <div>
-        <Reveal>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">
-                Master programmes
-              </p>
-              <h3 className="mt-2 font-display text-2xl text-navy sm:text-3xl">
-                High-impact career tracks
-              </h3>
             </div>
-            <button
-              type="button"
-              onClick={() => setActive("All")}
-              className="text-sm font-semibold text-navy underline decoration-gold decoration-2 underline-offset-4"
+          </Reveal>
+
+          {/* Auto horizontal scroll cards */}
+          <div className="relative mt-6 overflow-hidden">
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-foam to-transparent sm:w-14"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-foam to-transparent sm:w-14"
+              aria-hidden
+            />
+
+            <div
+              className="marquee-left flex w-max gap-4 py-2"
+              style={{ animationDuration: "32s" }}
             >
-              View full catalogue
-            </button>
+              {featuredLoop.map((course, i) => (
+                <div
+                  key={`${course.slug}-${i}`}
+                  className="w-[min(320px,78vw)] shrink-0 sm:w-[340px]"
+                >
+                  <CourseCard course={course} index={0} animate={false} />
+                </div>
+              ))}
+            </div>
           </div>
-        </Reveal>
-        <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {featured.map((course, i) => (
-            <CourseCard key={course.slug} course={course} index={i} />
-          ))}
+
+          <p className="mt-3 text-center text-[11px] text-muted">
+            Hover to pause · click a card to open details
+          </p>
         </div>
       </div>
 
-      {/* All courses + query sidebar */}
       <div id="all-courses" className="scroll-mt-28">
         <Reveal>
           <h3 className="font-display text-2xl text-navy sm:text-3xl">All courses</h3>
@@ -126,7 +160,7 @@ export function CourseCatalog() {
           </p>
         </Reveal>
 
-        <div className="mt-6 grid gap-8 lg:grid-cols-[1fr_300px]">
+        <div className="mt-6 grid items-start gap-8 lg:grid-cols-[1fr_300px]">
           <div>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <div className="flex flex-wrap gap-2">

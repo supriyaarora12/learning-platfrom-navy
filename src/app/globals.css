@@ -320,6 +320,55 @@ body {
   opacity: 1;
 }
 
+/* Partner logo marquee — alternating rows */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.marquee-left {
+  animation: marquee-left 40s linear infinite;
+}
+
+.marquee-right {
+  animation: marquee-right 40s linear infinite;
+}
+
+.marquee-left:hover,
+.marquee-right:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.marquee-up {
+  animation: marquee-up 32s linear infinite;
+}
+
+.marquee-up:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal.is-visible {
@@ -336,7 +385,10 @@ body {
   .wave-fade,
   .chip-float,
   .chip-float-delay,
-  .stat-pop {
+  .stat-pop,
+  .marquee-left,
+  .marquee-right,
+  .marquee-up {
     animation: none !important;
     opacity: 1;
     transform: none;

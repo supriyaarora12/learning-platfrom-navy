@@ -14,7 +14,7 @@ export function CourseQueryCard() {
   }
 
   return (
-    <aside className="rounded-2xl border border-line bg-white p-5 shadow-[0_18px_40px_-32px_rgba(11,31,58,0.35)] lg:sticky lg:top-24">
+    <aside className="self-start rounded-2xl border border-line bg-white p-5 shadow-[0_18px_40px_-32px_rgba(11,31,58,0.35)] lg:sticky lg:top-24">
       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">Drop your query</p>
       <h3 className="mt-2 font-display text-2xl text-navy">Need a course match?</h3>
       <p className="mt-2 text-sm text-muted">
