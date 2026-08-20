@@ -1,0 +1,16 @@
+export const loginPage = {
+  welcome: "Good to see you again, let's sail forward!",
+  mobileLabel: "Mobile Number",
+  mobilePlaceholder: "Enter your phone number",
+  rememberMe: "Remember me",
+  sendOtp: "Send OTP",
+  verifyOtp: "Verify & Login",
+  otpLabel: "Enter OTP",
+  otpPlaceholder: "6-digit code",
+  noAccount: "Don't have an account?",
+  signUp: "Sign up now",
+  signUpHref: "/contact",
+  panelTitle: "Your Merchant Navy LMS",
+  panelBody: "Live classes, recordings, mocks, and progress — all in one login.",
+  panelTags: ["IMUCET", "Live classes", "Mocks", "Sponsorship prep"],
+};
