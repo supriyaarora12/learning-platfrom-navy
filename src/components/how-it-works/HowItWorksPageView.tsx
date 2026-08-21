@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
-import { howItWorksPage, journeySteps, lmsStrip } from "@/content/how-it-works";
+import { howItWorksPage, lmsStrip } from "@/content/how-it-works";
 import { site } from "@/content/site";
 import { BeyondCourses } from "@/components/how-it-works/BeyondCourses";
 import { HowFaq } from "@/components/how-it-works/HowFaq";
+import { JourneyPath } from "@/components/how-it-works/JourneyPath";
 import { RecruitmentProcess } from "@/components/how-it-works/RecruitmentProcess";
 import { WhatWeOffer } from "@/components/how-it-works/WhatWeOffer";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -13,85 +15,70 @@ import { Reveal } from "@/components/ui/Reveal";
 export function HowItWorksPageView() {
   return (
     <>
-      <section className="relative overflow-hidden sea-grid text-white">
+      <section className="relative flex min-h-[calc(100svh-4.25rem)] overflow-hidden sea-grid text-white">
         <div className="pointer-events-none absolute inset-0 wave-fade" aria-hidden />
         <HeroOrbs />
-        <Container className="relative py-14 lg:py-16">
-          <nav className="hero-enter text-sm text-white/55">
-            <Link href="/" className="hover:text-white">
-              Home
-            </Link>
-            <span className="mx-2">/</span>
-            <span className="text-white/90">How It Works</span>
-          </nav>
+        <Container className="relative flex w-full flex-col justify-center py-12 lg:py-16">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+            <div>
+              <nav className="hero-enter text-sm text-white/55">
+                <Link href="/" className="hover:text-white">
+                  Home
+                </Link>
+                <span className="mx-2">/</span>
+                <span className="text-white/90">How It Works</span>
+              </nav>
 
-          <p className="hero-enter hero-enter-delay-1 mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-gold-soft">
-            {howItWorksPage.eyebrow}
-          </p>
-          <h1 className="hero-enter hero-enter-delay-2 mt-3 max-w-2xl font-display text-4xl tracking-tight sm:text-5xl">
-            {howItWorksPage.title}
-          </h1>
-          <p className="hero-enter hero-enter-delay-3 mt-4 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
-            {howItWorksPage.subtitle}
-          </p>
-          <div className="hero-enter hero-enter-delay-4 mt-8 flex flex-wrap gap-3">
-            <ButtonLink href={site.primaryCta.href}>{site.primaryCta.label}</ButtonLink>
-            <ButtonLink href="/courses" variant="secondary">
-              Browse courses
-            </ButtonLink>
+              <p className="hero-enter hero-enter-delay-1 mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-gold-soft">
+                {howItWorksPage.eyebrow}
+              </p>
+              <h1 className="hero-enter hero-enter-delay-2 mt-3 max-w-xl font-display text-4xl tracking-tight sm:text-5xl lg:text-[3.15rem] lg:leading-[1.12]">
+                {howItWorksPage.title}
+              </h1>
+              <p className="hero-enter hero-enter-delay-3 mt-4 max-w-lg text-base leading-relaxed text-white/75 sm:text-lg">
+                {howItWorksPage.subtitle}
+              </p>
+              <div className="hero-enter hero-enter-delay-4 mt-8 flex flex-wrap gap-3">
+                <ButtonLink href={site.primaryCta.href}>{site.primaryCta.label}</ButtonLink>
+                <ButtonLink href="/courses" variant="secondary">
+                  Browse courses
+                </ButtonLink>
+              </div>
+
+              <ol className="hero-enter hero-enter-delay-5 mt-10 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-white/55">
+                {["Enquire", "Enrol", "Learn", "Practice", "Guidance"].map((label, i) => (
+                  <li key={label} className="flex items-center gap-2">
+                    {i > 0 ? <span className="text-gold/70">→</span> : null}
+                    <span className="rounded-full bg-white/5 px-3 py-1.5 ring-1 ring-white/10">
+                      {label}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="hero-panel-enter relative mx-auto hidden w-full max-w-md lg:block lg:max-w-none">
+              <div className="relative mx-auto aspect-square w-[min(100%,420px)]">
+                <Image
+                  src="/assets/how-it-works-hero-doodle.png"
+                  alt="Merchant Navy path — enquire, enrol, learn, practice, guidance"
+                  fill
+                  priority
+                  unoptimized
+                  className="object-contain"
+                  sizes="420px"
+                />
+              </div>
+            </div>
           </div>
-
-          <ol className="hero-enter hero-enter-delay-5 mt-12 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-white/55">
-            {["Enquire", "Enrol", "Learn", "Practice", "Guidance"].map((label, i) => (
-              <li key={label} className="flex items-center gap-2">
-                {i > 0 ? <span className="text-gold/70">→</span> : null}
-                <span className="rounded-full bg-white/5 px-3 py-1.5 ring-1 ring-white/10">
-                  {label}
-                </span>
-              </li>
-            ))}
-          </ol>
         </Container>
       </section>
 
       {/* What we offer — wavy 7-step journey */}
       <WhatWeOffer />
 
-      {/* Full journey list */}
-      <section className="section-pad bg-white">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow="Your journey"
-              title="From first enquiry to selection-ready"
-              subtitle="Five clear stages after you start with SeaPath."
-            />
-          </Reveal>
-          <div className="mt-12 space-y-4">
-            {journeySteps.map((item, i) => (
-              <Reveal key={item.step} delay={i * 60}>
-                <article className="grid gap-5 rounded-2xl border border-line bg-foam/40 p-5 md:grid-cols-[72px_1fr] md:p-6">
-                  <p className="font-display text-3xl text-gold">{item.step}</p>
-                  <div>
-                    <h3 className="font-display text-xl text-navy sm:text-2xl">{item.title}</h3>
-                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">{item.body}</p>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {item.points.map((point) => (
-                        <li
-                          key={point}
-                          className="rounded-md bg-white px-2.5 py-1 text-xs font-medium text-navy/80 ring-1 ring-line"
-                        >
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
+      {/* Full journey path timeline */}
+      <JourneyPath />
 
       {/* Our 3 Steps — Recruitment / Selection process */}
       <RecruitmentProcess />

@@ -26,47 +26,67 @@ export function ContactPageView({ defaultCourse }: { defaultCourse?: string }) {
 
   return (
     <>
-      <section className="relative overflow-hidden sea-grid text-white">
+      {/* Hero — full viewport + white doodle */}
+      <section className="relative flex min-h-[calc(100svh-4.25rem)] overflow-hidden sea-grid text-white">
         <div className="pointer-events-none absolute inset-0 wave-fade" aria-hidden />
         <HeroOrbs />
-        <Container className="relative py-14 lg:py-16">
-          <nav className="hero-enter text-sm text-white/55">
-            <Link href="/" className="hover:text-white">
-              Home
-            </Link>
-            <span className="mx-2">/</span>
-            <span className="text-white/90">Contact Us</span>
-          </nav>
-          <p className="hero-enter hero-enter-delay-1 mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-gold-soft">
-            {contactPage.eyebrow}
-          </p>
-          <h1 className="hero-enter hero-enter-delay-2 mt-3 max-w-2xl font-display text-4xl tracking-tight sm:text-5xl">
-            {contactPage.title}
-          </h1>
-          <p className="hero-enter hero-enter-delay-3 mt-4 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
-            {contactPage.subtitle}
-          </p>
-          <div className="hero-enter hero-enter-delay-4 mt-8 flex flex-wrap gap-3">
-            <ButtonLink href={waUrl} external>
-              WhatsApp counsellor
-            </ButtonLink>
-            <ButtonLink href={`tel:${site.phone.replace(/\s/g, "")}`} variant="secondary">
-              Call {site.phone}
-            </ButtonLink>
+        <Container className="relative flex w-full flex-col justify-center py-12 lg:py-16">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+            <div>
+              <nav className="hero-enter text-sm text-white/55">
+                <Link href="/" className="hover:text-white">
+                  Home
+                </Link>
+                <span className="mx-2">/</span>
+                <span className="text-white/90">Contact Us</span>
+              </nav>
+              <p className="hero-enter hero-enter-delay-1 mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-gold-soft">
+                {contactPage.eyebrow}
+              </p>
+              <h1 className="hero-enter hero-enter-delay-2 mt-3 max-w-xl font-display text-4xl tracking-tight sm:text-5xl lg:text-[3.15rem] lg:leading-[1.12]">
+                {contactPage.title}
+              </h1>
+              <p className="hero-enter hero-enter-delay-3 mt-4 max-w-lg text-base leading-relaxed text-white/75 sm:text-lg">
+                {contactPage.subtitle}
+              </p>
+              <div className="hero-enter hero-enter-delay-4 mt-8 flex flex-wrap gap-3">
+                <ButtonLink href={waUrl} external>
+                  WhatsApp counsellor
+                </ButtonLink>
+                <ButtonLink href={`tel:${site.phone.replace(/\s/g, "")}`} variant="secondary">
+                  Call {site.phone}
+                </ButtonLink>
+              </div>
+            </div>
+
+            <div className="hero-panel-enter relative mx-auto hidden w-full max-w-md lg:block lg:max-w-none">
+              <div className="relative mx-auto aspect-square w-[min(100%,420px)]">
+                {/* unoptimized: Next image optimizer was flattening PNG alpha to black */}
+                <Image
+                  src="/assets/contact-hero-doodle.png"
+                  alt="Talk to a SeaPath counsellor — WhatsApp, call, and visit guidance"
+                  fill
+                  priority
+                  unoptimized
+                  className="object-contain"
+                  sizes="420px"
+                />
+              </div>
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* Form + location + QR */}
+      {/* Form + location + QR — equal columns, stretch-aligned */}
       <section className="section-pad bg-foam">
-        <Container className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <Reveal variant="left">
+        <Container className="grid gap-8 lg:grid-cols-2 lg:items-stretch">
+          <Reveal variant="left" className="h-full">
             <ContactForm defaultCourse={defaultCourse} />
           </Reveal>
 
-          <div className="space-y-5">
-            <Reveal variant="right" delay={80}>
-              <div className="rounded-2xl border border-line bg-white p-6">
+          <div className="flex h-full flex-col gap-5">
+            <Reveal variant="right" delay={80} className="flex min-h-0 flex-1 flex-col">
+              <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-6 sm:p-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                   Location
                 </p>
@@ -105,21 +125,21 @@ export function ContactPageView({ defaultCourse }: { defaultCourse?: string }) {
                   href={site.address.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-5 inline-flex text-sm font-semibold text-navy underline decoration-gold decoration-2 underline-offset-4"
+                  className="mt-auto inline-flex pt-5 text-sm font-semibold text-navy underline decoration-gold decoration-2 underline-offset-4"
                 >
                   Open in Google Maps →
                 </a>
               </div>
             </Reveal>
 
-            <Reveal variant="right" delay={140}>
-              <div className="rounded-2xl border border-line bg-white p-6">
+            <Reveal variant="right" delay={140} className="flex min-h-0 flex-1 flex-col">
+              <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-6 sm:p-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                   Scanner
                 </p>
                 <h2 className="mt-2 font-display text-2xl text-navy">{contactQr.title}</h2>
                 <p className="mt-2 text-sm text-muted">{contactQr.body}</p>
-                <div className="mt-5 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
+                <div className="mt-5 flex flex-1 flex-col items-center justify-center gap-4 sm:flex-row sm:items-center">
                   <div className="rounded-xl border border-line bg-foam p-3">
                     <Image
                       src={qrSrc}

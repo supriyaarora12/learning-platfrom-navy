@@ -52,38 +52,38 @@ export function RecruitmentProcess() {
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {recruitmentProcess.items.map((item, i) => (
             <Reveal key={item.title} delay={i * 90}>
-              <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-foam/50 p-6">
+              <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-navy p-6 text-white shadow-[0_22px_50px_-30px_rgba(11,31,58,0.55)]">
                 <div
                   className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl ${
                     item.tone === "gold"
-                      ? "bg-gold/25 text-navy"
+                      ? "bg-gold text-navy-deep"
                       : item.tone === "foam"
-                        ? "bg-white text-navy ring-1 ring-line"
-                        : "bg-navy text-gold-soft"
+                        ? "bg-white/10 text-gold-soft ring-1 ring-white/20"
+                        : "bg-white/10 text-gold-soft ring-1 ring-gold/40"
                   }`}
                 >
                   <StepIcon type={item.icon} />
                 </div>
-                <p className="text-xs font-semibold tracking-[0.16em] text-gold">
+                <p className="text-xs font-semibold tracking-[0.16em] text-gold-soft">
                   Step {i + 1}
                 </p>
-                <h3 className="mt-2 font-display text-2xl text-navy">{item.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{item.body}</p>
-                <ul className="mt-5 space-y-2 border-t border-line pt-4">
+                <h3 className="mt-2 font-display text-2xl text-white">{item.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-white/70">{item.body}</p>
+                <ul className="mt-5 space-y-2 border-t border-white/15 pt-4">
                   {item.badges.map((badge) => (
                     <li key={badge}>
                       <span
                         className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold ${
                           item.tone === "gold"
-                            ? "bg-gold/20 text-navy"
+                            ? "bg-gold/20 text-gold-soft"
                             : item.tone === "foam"
-                              ? "bg-white text-navy ring-1 ring-line"
-                              : "bg-navy/5 text-navy"
+                              ? "bg-white/10 text-white/90 ring-1 ring-white/15"
+                              : "bg-white/8 text-white/85 ring-1 ring-white/10"
                         }`}
                       >
                         <span
                           className={`h-1.5 w-1.5 rounded-full ${
-                            item.tone === "gold" ? "bg-gold" : "bg-navy"
+                            item.tone === "gold" ? "bg-gold" : "bg-gold-soft"
                           }`}
                         />
                         {badge}

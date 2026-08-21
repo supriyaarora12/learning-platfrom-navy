@@ -91,30 +91,37 @@ export const beyondCourses = {
   eyebrow: "Beyond courses",
   title: "Additional support we provide",
   subtitle: "Extra help around your batch — so you’re not left alone between classes.",
+  backgroundImage: "/assets/why-seapath-mentors.png",
   items: [
     {
       title: "LMS profile",
       body: "Track classes, recordings, and test history in one student dashboard.",
+      image: "/assets/beyond-lms.png",
     },
     {
       title: "LinkedIn / presence",
       body: "Guidance to present yourself clearly as a Merchant Navy aspirant.",
+      image: "/assets/beyond-linkedin.png",
     },
     {
       title: "Resume & biodata",
       body: "Clean, sponsorship-ready resume and biodata support.",
+      image: "/assets/beyond-resume.png",
     },
     {
       title: "Soft skills",
       body: "Communication, confidence, and panel etiquette for interviews.",
+      image: "/assets/beyond-softskills.png",
     },
     {
       title: "Interview preparation",
       body: "Question banks, drills, and strategy before company day.",
+      image: "/assets/beyond-interview.png",
     },
     {
       title: "Live practice labs",
       body: "Mocks, interview labs, and timed practice — not theory only.",
+      image: "/assets/beyond-labs.png",
     },
   ],
 };

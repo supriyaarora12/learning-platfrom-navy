@@ -12,7 +12,13 @@ const courses = [
   "Not sure yet",
 ];
 
-export function ContactForm({ defaultCourse }: { defaultCourse?: string }) {
+export function ContactForm({
+  defaultCourse,
+  className = "",
+}: {
+  defaultCourse?: string;
+  className?: string;
+}) {
   const [sent, setSent] = useState(false);
   const initial =
     defaultCourse && courses.includes(defaultCourse) ? defaultCourse : "IMUCET Complete";
@@ -24,7 +30,9 @@ export function ContactForm({ defaultCourse }: { defaultCourse?: string }) {
   }
 
   return (
-    <div className="rounded-2xl border border-line bg-white p-6 shadow-[0_20px_50px_-34px_rgba(11,31,58,0.4)] sm:p-8">
+    <div
+      className={`flex h-full flex-col rounded-2xl border border-line bg-white p-6 shadow-[0_20px_50px_-34px_rgba(11,31,58,0.4)] sm:p-8 ${className}`}
+    >
       <h2 className="font-display text-2xl text-navy">Send an enquiry</h2>
       <p className="mt-1 text-sm text-muted">We’ll get back on phone or email.</p>
 
@@ -33,7 +41,7 @@ export function ContactForm({ defaultCourse }: { defaultCourse?: string }) {
           Thanks — we&apos;ll reach out shortly on your phone or email.
         </p>
       ) : (
-        <form onSubmit={onSubmit} className="mt-6 grid gap-4">
+        <form onSubmit={onSubmit} className="mt-6 flex flex-1 flex-col gap-4">
           <Field label="Full name" name="name" required />
           <Field label="Email" name="email" type="email" required />
           <Field label="Mobile" name="mobile" type="tel" required />
@@ -62,7 +70,7 @@ export function ContactForm({ defaultCourse }: { defaultCourse?: string }) {
           </label>
           <button
             type="submit"
-            className="mt-1 rounded-md bg-gold px-5 py-3 text-sm font-semibold text-navy-deep transition hover:bg-gold-soft"
+            className="mt-auto rounded-md bg-gold px-5 py-3 text-sm font-semibold text-navy-deep transition hover:bg-gold-soft"
           >
             Submit enquiry
           </button>

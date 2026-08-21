@@ -36,7 +36,11 @@ export const aboutStats = [
 
 export const aboutMilestones = {
   eyebrow: "Timeline",
-  title: "How SeaPath took shape",
+  titleBefore: "How SeaPath",
+  titleAfter: "took shape",
+  subtitle:
+    "From a Merchant Navy-only focus to coaching, LMS, free tools, and outcomes-led batches.",
+  markImage: "/assets/about-timeline-mark.png",
   items: [
     {
       year: "Start",
@@ -65,26 +69,54 @@ export const aboutGallery = {
   eyebrow: "Inside the journey",
   title: "Learning that feels real",
   subtitle: "Atmosphere from classroom focus to life at sea — what aspirants are working toward.",
-  images: [
+  cards: [
     {
-      src: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
-      alt: "Ship at sea under open sky",
-      caption: "Life at sea",
+      key: "sea",
+      title: "Life at sea",
+      mark: "S",
+      items: [
+        "Global routes & ports",
+        "Shipboard discipline",
+        "Rank progression",
+        "Responsibility at sea",
+        "Career beyond the exam",
+      ],
     },
     {
-      src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-      alt: "Students learning together",
-      caption: "Live learning",
+      key: "learn",
+      title: "Live learning",
+      mark: "L",
+      items: [
+        "Interactive live classes",
+        "Full recording library",
+        "Mentor-led doubt sessions",
+        "Batch study plans",
+        "LMS dashboard access",
+      ],
     },
     {
-      src: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80",
-      alt: "Student preparing with notes",
-      caption: "Focused practice",
+      key: "practice",
+      title: "Focused practice",
+      mark: "P",
+      items: [
+        "Topic drills & quizzes",
+        "Full-length mocks",
+        "Error analysis clinics",
+        "Timed exam conditions",
+        "Free readiness tools",
+      ],
     },
     {
-      src: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=1200&q=80",
-      alt: "Cargo port and containers",
-      caption: "Industry reality",
+      key: "industry",
+      title: "Industry reality",
+      mark: "I",
+      items: [
+        "Sponsorship pathways",
+        "Company patterns",
+        "Interview readiness",
+        "Medical & eligibility",
+        "Selection-season focus",
+      ],
     },
   ],
 };
@@ -215,12 +247,14 @@ export const aboutTestimonials = {
         "Regular tests, mock interviews, and personal guidance made the difference. If you're serious about Merchant Navy, this is the path.",
       name: "Harsh Vardhan",
       role: "Sponsored · Anglo-Eastern",
+      image: "/assets/story-harsh.png",
     },
     {
       quote:
         "Industry-aware faculty, realistic mocks, and clear guidance. I walked into exams ready — and into a career path at sea.",
       name: "Shrishti Yadav",
       role: "AIR pathway · Anglo-Eastern",
+      image: "/assets/story-shrishti.png",
     },
   ],
 };

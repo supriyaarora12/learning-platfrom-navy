@@ -4,8 +4,6 @@ import {
   aboutCareer,
   aboutCommunity,
   aboutEdge,
-  aboutGallery,
-  aboutMilestones,
   aboutMission,
   aboutPage,
   aboutPartners,
@@ -22,62 +20,59 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { HeroOrbs } from "@/components/ui/HeroOrbs";
 import { Reveal } from "@/components/ui/Reveal";
+import { AboutTimeline } from "@/components/about/AboutTimeline";
+import { JourneyFlipCards } from "@/components/about/JourneyFlipCards";
+import { SocialIcon } from "@/components/contact/SocialLinks";
 
 export function AboutPageView() {
   return (
     <>
-      {/* Hero with visual — Marine Edge team/sea energy */}
-      <section className="relative overflow-hidden sea-grid text-white">
+      {/* Hero — full viewport + white doodle */}
+      <section className="relative flex min-h-[calc(100svh-4.25rem)] overflow-hidden sea-grid text-white">
         <div className="pointer-events-none absolute inset-0 wave-fade" aria-hidden />
         <HeroOrbs />
-        <Container className="relative grid items-center gap-10 py-14 lg:grid-cols-[1.1fr_0.9fr] lg:py-16">
-          <div>
-            <nav className="hero-enter text-sm text-white/55">
-              <Link href="/" className="hover:text-white">
-                Home
-              </Link>
-              <span className="mx-2">/</span>
-              <span className="text-white/90">About Us</span>
-            </nav>
+        <Container className="relative flex w-full flex-col justify-center py-12 lg:py-16">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+            <div>
+              <nav className="hero-enter text-sm text-white/55">
+                <Link href="/" className="hover:text-white">
+                  Home
+                </Link>
+                <span className="mx-2">/</span>
+                <span className="text-white/90">About Us</span>
+              </nav>
 
-            <p className="hero-enter hero-enter-delay-1 mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-gold-soft">
-              {aboutPage.eyebrow}
-            </p>
-            <h1 className="hero-enter hero-enter-delay-2 mt-3 max-w-xl font-display text-4xl tracking-tight sm:text-5xl">
-              {aboutPage.title}
-            </h1>
-            <p className="hero-enter hero-enter-delay-3 mt-4 max-w-lg text-base leading-relaxed text-white/75 sm:text-lg">
-              {aboutPage.subtitle}
-            </p>
-            <div className="hero-enter hero-enter-delay-4 mt-8 flex flex-wrap gap-3">
-              <ButtonLink href={site.primaryCta.href}>{site.primaryCta.label}</ButtonLink>
-              <ButtonLink href="/how-it-works" variant="secondary">
-                How it works
-              </ButtonLink>
-            </div>
-          </div>
-
-          <Reveal variant="right" className="relative hidden min-h-[320px] lg:block">
-            <div className="absolute inset-0 overflow-hidden rounded-tl-[3rem] rounded-br-[3rem] ring-1 ring-white/20">
-              <Image
-                src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80"
-                alt="Merchant Navy journey at sea"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 0px, 480px"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-navy/25 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-soft">
-                  Who we serve
-                </p>
-                <p className="mt-2 font-display text-2xl text-white">
-                  Aspirants aiming for ranks, sponsorships, and life at sea.
-                </p>
+              <p className="hero-enter hero-enter-delay-1 mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-gold-soft">
+                {aboutPage.eyebrow}
+              </p>
+              <h1 className="hero-enter hero-enter-delay-2 mt-3 max-w-xl font-display text-4xl tracking-tight sm:text-5xl lg:text-[3.15rem] lg:leading-[1.12]">
+                {aboutPage.title}
+              </h1>
+              <p className="hero-enter hero-enter-delay-3 mt-4 max-w-lg text-base leading-relaxed text-white/75 sm:text-lg">
+                {aboutPage.subtitle}
+              </p>
+              <div className="hero-enter hero-enter-delay-4 mt-8 flex flex-wrap gap-3">
+                <ButtonLink href={site.primaryCta.href}>{site.primaryCta.label}</ButtonLink>
+                <ButtonLink href="/how-it-works" variant="secondary">
+                  How it works
+                </ButtonLink>
               </div>
             </div>
-          </Reveal>
+
+            <div className="hero-panel-enter relative mx-auto hidden w-full max-w-md lg:block lg:max-w-none">
+              <div className="relative mx-auto aspect-square w-[min(100%,420px)]">
+                <Image
+                  src="/assets/about-hero-doodle.png"
+                  alt="SeaPath — mentoring Merchant Navy aspirants toward ranks and sponsorships"
+                  fill
+                  priority
+                  unoptimized
+                  className="object-contain"
+                  sizes="420px"
+                />
+              </div>
+            </div>
+          </div>
         </Container>
       </section>
 
@@ -163,58 +158,8 @@ export function AboutPageView() {
         </Container>
       </section>
 
-      {/* Milestones timeline — Croma years narrative */}
-      <section className="section-pad bg-mist/50">
-        <Container>
-          <Reveal>
-            <SectionHeading eyebrow={aboutMilestones.eyebrow} title={aboutMilestones.title} />
-          </Reveal>
-          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {aboutMilestones.items.map((item, i) => (
-              <Reveal key={item.title} delay={i * 70}>
-                <article className="relative h-full rounded-2xl border border-line bg-white p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">
-                    {item.year}
-                  </p>
-                  <h3 className="mt-3 font-display text-xl text-navy">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{item.body}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Image gallery */}
-      <section className="section-pad bg-white">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow={aboutGallery.eyebrow}
-              title={aboutGallery.title}
-              subtitle={aboutGallery.subtitle}
-            />
-          </Reveal>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {aboutGallery.images.map((img, i) => (
-              <Reveal key={img.src} delay={i * 70}>
-                <figure className="group relative aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-line">
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover transition duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-deep/90 to-transparent px-4 pb-4 pt-10 text-sm font-semibold text-white">
-                    {img.caption}
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
+      {/* Milestones timeline */}
+      <AboutTimeline />
 
       {/* Mission pillars */}
       <section className="section-pad bg-foam">
@@ -241,6 +186,9 @@ export function AboutPageView() {
           </div>
         </Container>
       </section>
+
+      {/* Inside the journey — flip cards */}
+      <JourneyFlipCards />
 
       {/* Values */}
       <section className="section-pad bg-white">
@@ -358,12 +306,23 @@ export function AboutPageView() {
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
             {aboutTestimonials.items.map((item, i) => (
               <Reveal key={item.name} delay={i * 90}>
-                <blockquote className="h-full border-l-2 border-gold bg-white px-5 py-6">
-                  <p className="text-sm leading-relaxed text-ink/90">“{item.quote}”</p>
-                  <footer className="mt-5">
-                    <p className="font-semibold text-navy">{item.name}</p>
-                    <p className="text-xs text-muted">{item.role}</p>
-                  </footer>
+                <blockquote className="flex h-full gap-4 border-l-2 border-gold bg-white p-4 sm:gap-5 sm:p-5">
+                  <div className="relative h-20 w-20 shrink-0 overflow-hidden bg-mist sm:h-24 sm:w-24">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="96px"
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1 py-0.5">
+                    <p className="text-sm leading-relaxed text-ink/90">“{item.quote}”</p>
+                    <footer className="mt-4">
+                      <p className="font-semibold text-navy">{item.name}</p>
+                      <p className="text-xs text-muted">{item.role}</p>
+                    </footer>
+                  </div>
                 </blockquote>
               </Reveal>
             ))}
@@ -392,19 +351,61 @@ export function AboutPageView() {
             </div>
           </Reveal>
           <Reveal variant="right" delay={100}>
-            <div className="h-full rounded-2xl bg-navy p-6 text-white sm:p-8">
+            <div className="flex h-full flex-col rounded-2xl bg-navy p-6 text-white sm:p-8">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-soft">
                 {aboutCommunity.eyebrow}
               </p>
               <h2 className="mt-3 font-display text-3xl">{aboutCommunity.title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-white/70">{aboutCommunity.subtitle}</p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <ButtonLink href={site.social.youtube} external>
-                  YouTube
-                </ButtonLink>
-                <ButtonLink href={site.social.instagram} variant="secondary" external>
-                  Instagram
-                </ButtonLink>
+
+              <div className="mt-8 grid flex-1 gap-3 sm:grid-cols-2">
+                <a
+                  href={site.social.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 rounded-xl bg-white/5 p-3.5 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-white/25"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#FF0000] text-white shadow-[0_8px_20px_-8px_rgba(255,0,0,0.7)]">
+                    <SocialIcon name="youtube" className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold text-white">YouTube</span>
+                    <span className="mt-0.5 block text-xs text-white/55">Watch & subscribe</span>
+                  </span>
+                  <span
+                    aria-hidden
+                    className="ml-auto text-white/35 transition group-hover:translate-x-0.5 group-hover:text-gold-soft"
+                  >
+                    →
+                  </span>
+                </a>
+
+                <a
+                  href={site.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 rounded-xl bg-white/5 p-3.5 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-white/25"
+                >
+                  <span
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-white shadow-[0_8px_20px_-8px_rgba(225,48,108,0.65)]"
+                    style={{
+                      background:
+                        "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+                    }}
+                  >
+                    <SocialIcon name="instagram" className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold text-white">Instagram</span>
+                    <span className="mt-0.5 block text-xs text-white/55">Follow daily tips</span>
+                  </span>
+                  <span
+                    aria-hidden
+                    className="ml-auto text-white/35 transition group-hover:translate-x-0.5 group-hover:text-gold-soft"
+                  >
+                    →
+                  </span>
+                </a>
               </div>
             </div>
           </Reveal>

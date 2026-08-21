@@ -6,7 +6,6 @@ import { FreeToolsPreview } from "@/components/home/FreeToolsPreview";
 import { Hero } from "@/components/home/Hero";
 import { Partners } from "@/components/home/Partners";
 import { Results } from "@/components/home/Results";
-import { Stats } from "@/components/home/Stats";
 import { Testimonials } from "@/components/home/Testimonials";
 import { WhyMerchantNavy } from "@/components/home/WhyMerchantNavy";
 import { WhyUs } from "@/components/home/WhyUs";
@@ -15,7 +14,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Stats />
       <WhyUs />
       <Results />
       <Partners />

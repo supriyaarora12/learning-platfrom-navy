@@ -2,16 +2,32 @@ export const homeHero = {
   brand: "SeaPath",
   headline: "Your journey to the Merchant Navy starts here",
   subline:
-    "Expert-led IMUCET courses, live classes, mock tests, and sponsorship guidance — built for aspiring seafarers.",
+    "Expert-led IMUCET courses, live classes, mock tests, and sponsorship guidance — built for aspiring seafarers. From first counselling call to company interviews — clear steps, real mentors, and a path you can trust.",
   primaryCta: { label: "Start Free Trial", href: "/contact" },
   secondaryCta: { label: "Explore Courses", href: "/courses" },
 };
 
 export const homeStats = [
-  { value: "5,000+", label: "Happy Students" },
-  { value: "2,000+", label: "Officers Made" },
-  { value: "20+", label: "Sponsorship Companies" },
-  { value: "80,000+", label: "Community Strong" },
+  {
+    value: "5,000+",
+    label: "Happy Students",
+    body: "Aspirants who trust SeaPath for IMUCET prep, mocks, and clear career guidance.",
+  },
+  {
+    value: "2,000+",
+    label: "Officers Made",
+    body: "Learners who moved from classroom focus to real ranks and life at sea.",
+  },
+  {
+    value: "20+",
+    label: "Sponsorship Companies",
+    body: "Industry names our students prepare for — from selection to sponsorship pathways.",
+  },
+  {
+    value: "80,000+",
+    label: "Community Strong",
+    body: "Cadets, parents, and alumni growing with daily insights and batch support.",
+  },
 ];
 
 export const whyUs = {
@@ -51,12 +67,12 @@ export const homeResults = {
     "From IMUCET ranks to sponsorship selections — ambition turning into real careers at sea.",
   backgroundImage: "/assets/results-celebration-bg.png",
   items: [
-    { name: "Akash Kumar", detail: "AIR 1 · IMU-CET 2026" },
-    { name: "Prithveesh Purohit", detail: "AIR 37 · IMU-CET 2026" },
-    { name: "Harsh Vardhan", detail: "Sponsored · Anglo-Eastern & Fleet" },
-    { name: "Charu Bhardwaj", detail: "Sponsored · Synergy Group" },
-    { name: "Himanshu Kumar", detail: "Multi-company sponsorships" },
-    { name: "Shrishti Yadav", detail: "AIR 99 · Anglo-Eastern" },
+    { name: "Akash Kumar", detail: "AIR 1 · IMU-CET 2026", image: "/assets/story-harsh.png" },
+    { name: "Prithveesh Purohit", detail: "AIR 37 · IMU-CET 2026", image: "/assets/story-charu.png" },
+    { name: "Harsh Vardhan", detail: "Sponsored · Anglo-Eastern & Fleet", image: "/assets/story-harsh.png" },
+    { name: "Charu Bhardwaj", detail: "Sponsored · Synergy Group", image: "/assets/story-charu.png" },
+    { name: "Himanshu Kumar", detail: "Multi-company sponsorships", image: "/assets/story-shrishti.png" },
+    { name: "Shrishti Yadav", detail: "AIR 99 · Anglo-Eastern", image: "/assets/story-shrishti.png" },
   ],
 };
 
@@ -92,7 +108,8 @@ export const partners = {
 
 export const homeTestimonials = {
   title: "Students love SeaPath",
-  subtitle: "Real journeys. Real sponsorships. In their words.",
+  subtitle: "Real journeys. Real sponsorships. In their words — and on camera.",
+  backgroundImage: "/assets/hero-merchant-navy.png",
   items: [
     {
       quote:
@@ -100,6 +117,7 @@ export const homeTestimonials = {
       name: "Harsh Vardhan",
       role: "Sponsored · Anglo-Eastern",
       image: "/assets/story-harsh.png",
+      youtubeId: "M7lc1UVf-VE",
     },
     {
       quote:
@@ -107,6 +125,7 @@ export const homeTestimonials = {
       name: "Charu Bhardwaj",
       role: "Sponsored · Synergy Group",
       image: "/assets/story-charu.png",
+      youtubeId: "aqz-KE-bpKQ",
     },
     {
       quote:
@@ -114,6 +133,31 @@ export const homeTestimonials = {
       name: "Shrishti Yadav",
       role: "AIR 99 · Anglo-Eastern",
       image: "/assets/story-shrishti.png",
+      youtubeId: "LXb3EKWsInQ",
+    },
+    {
+      quote:
+        "Structured batches and honest counselling kept me focused from day one — the rank felt earned, not lucky.",
+      name: "Akash Kumar",
+      role: "AIR 1 · IMU-CET 2026",
+      image: "/assets/story-harsh.png",
+      youtubeId: "M7lc1UVf-VE",
+    },
+    {
+      quote:
+        "Mocks mirrored the real pressure. When selection day came, I already knew the rhythm of the exam.",
+      name: "Prithveesh Purohit",
+      role: "AIR 37 · IMU-CET 2026",
+      image: "/assets/story-charu.png",
+      youtubeId: "aqz-KE-bpKQ",
+    },
+    {
+      quote:
+        "From forms to interviews, SeaPath made the sponsorship path clear — not scattered WhatsApp advice.",
+      name: "Himanshu Kumar",
+      role: "Multi-company sponsorships",
+      image: "/assets/story-shrishti.png",
+      youtubeId: "LXb3EKWsInQ",
     },
   ],
 };
@@ -155,18 +199,33 @@ export const coursesPreview = {
       body: "Live + recorded classes, topic tests, and full-length mocks for IMU-CET.",
       href: "/courses/imucet-complete",
       tag: "Most popular",
+      cta: "View course",
+      image: "/assets/why-seapath-learning.png",
+      imageAlt: "IMUCET preparation with SeaPath",
+      price: 14999,
+      originalPrice: 24999,
     },
     {
       title: "DNS & Sponsorship Prep",
       body: "Company patterns, interview drills, and guidance through selection rounds.",
       href: "/courses/dns-sponsorship-prep",
       tag: "Career track",
+      cta: "View course",
+      image: "/assets/why-seapath-career.png",
+      imageAlt: "DNS and sponsorship preparation",
+      price: 9999,
+      originalPrice: 15999,
     },
     {
       title: "Crash Revision",
       body: "Focused revision blocks and analytics when the exam window is close.",
       href: "/courses/crash-revision",
       tag: "Fast track",
+      cta: "View course",
+      image: "/assets/follow-learning.png",
+      imageAlt: "Crash revision for IMU-CET",
+      price: 5999,
+      originalPrice: 9999,
     },
   ],
 };
@@ -198,16 +257,29 @@ export const followAlong = {
 export const whyMerchantNavy = {
   eyebrow: "The career",
   title: "Why choose the Merchant Navy?",
-  subtitle: "Adventure comes with responsibility. Growth comes with discipline.",
-  body: [
-    "A career at sea gives you the chance to travel the world, earn well, develop valuable skills, and build a future with global opportunities.",
-    "But it also demands something in return: discipline, resilience, leadership, and responsibility for people, operations, and decisions at sea.",
-    "It isn’t just a career that takes you places. It’s a career that helps you grow into someone capable of leading them.",
+  lead: "A career at sea offers global horizons, strong earnings, and leadership forged by real responsibility — with discipline as the price of entry.",
+  image: "/assets/career-merchant-navy.png",
+  imageAlt: "Merchant Navy aspirant preparing with SeaPath coaching",
+  stats: [
+    { value: "20+", label: "Sponsorship companies" },
+    { value: "2K+", label: "Officers made" },
   ],
   points: [
-    { title: "Global horizons", body: "Ports, cultures, and opportunities across the world." },
-    { title: "Strong earnings", body: "Competitive pay with clear rank-based growth." },
-    { title: "Real leadership", body: "Skills forged by responsibility, not classroom theory alone." },
+    {
+      title: "Global horizons",
+      body: "Travel, ports, and opportunities across the world — not a desk-bound routine.",
+      icon: "globe" as const,
+    },
+    {
+      title: "Strong earnings",
+      body: "Competitive pay with clear rank-based growth as you progress at sea.",
+      icon: "growth" as const,
+    },
+    {
+      title: "Real leadership",
+      body: "Skills forged by responsibility for people, operations, and decisions.",
+      icon: "leadership" as const,
+    },
   ],
 };
 
