@@ -43,7 +43,7 @@ export function BeyondCourses() {
           {beyondCourses.items.map((item, i) => (
             <Reveal key={item.title} delay={i * 50}>
               <article
-                className="beyond-tile group relative flex h-full min-h-[148px] overflow-hidden rounded-xl border border-line bg-white shadow-[0_14px_32px_-24px_rgba(11,31,58,0.3)]"
+                className="beyond-tile group relative flex h-full min-h-[148px] overflow-hidden rounded-xl border border-line bg-white shadow-[0_10px_24px_-28px_rgba(11,31,58,0.22)]"
                 style={{ animationDelay: `${i * 0.3}s` }}
               >
                 <div className="absolute inset-0">
@@ -55,8 +55,8 @@ export function BeyondCourses() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     aria-hidden
                   />
-                  {/* Light wash — keep photo visible */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/75 via-white/35 to-white/10" />
+                  {/* Reduced white wash so text stays clear (less bright) */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/45 to-white/15" />
                 </div>
 
                 <div className="relative z-10 flex h-full flex-col justify-end p-4">

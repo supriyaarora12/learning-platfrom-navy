@@ -1,27 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import { coursesPage } from "@/content/courses";
+import { coursesHeroStats, coursesPage } from "@/content/courses";
 import { site } from "@/content/site";
 import { CourseCatalog } from "@/components/courses/CourseCatalog";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { HeroOrbs } from "@/components/ui/HeroOrbs";
 import { Reveal } from "@/components/ui/Reveal";
-
-const heroStats = [
-  ["6", "Programs"],
-  ["Live + LMS", "Learning mode"],
-  ["Mocks", "Exam practice"],
-  ["Mentor", "Guidance"],
-] as const;
+import { StatsCarousel } from "@/components/ui/StatsCarousel";
 
 export function CoursesPageView() {
   return (
     <>
-      <section className="relative flex min-h-[calc(100svh-4.25rem)] overflow-hidden sea-grid text-white">
+      <section className="relative flex min-h-[calc(100svh-4.25rem)] flex-col overflow-hidden sea-grid text-white">
         <div className="pointer-events-none absolute inset-0 wave-fade" aria-hidden />
         <HeroOrbs />
 
-        <div className="container-page relative flex w-full flex-col justify-center py-12 lg:py-16">
+        <div className="container-page relative flex flex-1 flex-col justify-center py-12 lg:py-16">
           <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
             <div>
               <nav className="hero-enter text-sm text-white/55">
@@ -47,19 +41,6 @@ export function CoursesPageView() {
                   Try free tools
                 </ButtonLink>
               </div>
-
-              <dl className="mt-10 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">
-                {heroStats.map(([value, label], i) => (
-                  <div
-                    key={label}
-                    className="stat-pop rounded-xl bg-white/5 px-3 py-3 ring-1 ring-white/10"
-                    style={{ animationDelay: `${0.55 + i * 0.08}s` }}
-                  >
-                    <dt className="font-display text-lg text-gold-soft">{value}</dt>
-                    <dd className="mt-1 text-xs text-white/60">{label}</dd>
-                  </div>
-                ))}
-              </dl>
             </div>
 
             <div className="hero-panel-enter relative mx-auto hidden w-full max-w-md lg:block lg:max-w-none">
@@ -77,6 +58,10 @@ export function CoursesPageView() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="hero-enter hero-enter-delay-5 relative mt-4 sm:mt-6">
+          <StatsCarousel items={coursesHeroStats} />
         </div>
       </section>
 

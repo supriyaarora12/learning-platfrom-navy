@@ -1,40 +1,12 @@
+import Image from "next/image";
 import { recruitmentProcess } from "@/content/how-it-works";
-import { Container, SectionHeading } from "@/components/ui/Container";
+import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
-function StepIcon({ type }: { type: string }) {
-  const common = "h-7 w-7";
-  if (type === "profile") {
-    return (
-      <svg className={common} viewBox="0 0 24 24" fill="none" aria-hidden>
-        <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.6" />
-        <path
-          d="M5 19c1.8-3.2 4-4.8 7-4.8s5.2 1.6 7 4.8"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-        />
-      </svg>
-    );
-  }
-  if (type === "interview") {
-    return (
-      <svg className={common} viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect x="4" y="5" width="16" height="11" rx="2" stroke="currentColor" strokeWidth="1.6" />
-        <path d="M8 19h8M12 16v3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-      </svg>
-    );
-  }
-  return (
-    <svg className={common} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path
-        d="M12 3l2.4 4.9L20 9l-4 3.9.9 5.1L12 15.8 7.1 18l.9-5.1L4 9l5.6-1.1L12 3z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
+function stepImage(type: string) {
+  if (type === "profile") return "/assets/beyond-resume.png";
+  if (type === "interview") return "/assets/beyond-labs.png";
+  return "/assets/beyond-linkedin.png";
 }
 
 export function RecruitmentProcess() {
@@ -42,55 +14,101 @@ export function RecruitmentProcess() {
     <section className="section-pad bg-white">
       <Container>
         <Reveal>
-          <SectionHeading
-            eyebrow={recruitmentProcess.eyebrow}
-            title={recruitmentProcess.title}
-            subtitle={recruitmentProcess.subtitle}
-          />
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+              {recruitmentProcess.eyebrow}
+            </p>
+            <h2 className="mt-3 font-display text-3xl tracking-tight text-navy sm:text-4xl">
+              {recruitmentProcess.title}
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
+              {recruitmentProcess.subtitle}
+            </p>
+          </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+        {/* Desktop process */}
+        <div className="relative mx-auto mt-16 hidden max-w-5xl lg:block">
+          {/* Dashed connectors between circle centers */}
+          <svg
+            className="pointer-events-none absolute left-[16.66%] right-[16.66%] top-[52px] h-[88px] w-[66.68%]"
+            viewBox="0 0 600 88"
+            fill="none"
+            preserveAspectRatio="none"
+            aria-hidden
+          >
+            <path
+              d="M0 28 C 70 28, 80 78, 150 78 S 220 28, 300 28 S 380 8, 450 8 S 520 36, 600 36"
+              stroke="#9aa4b2"
+              strokeWidth="1.6"
+              strokeDasharray="5 7"
+              strokeLinecap="round"
+            />
+          </svg>
+
+          <div className="relative grid grid-cols-3 gap-8">
+            {recruitmentProcess.items.map((item, i) => (
+              <Reveal key={item.title} delay={i * 90}>
+                <article className="flex flex-col items-center text-center">
+                  <div className="relative mb-6 flex h-[120px] w-[120px] items-center justify-center">
+                    <span className="absolute -left-1 -top-1 font-display text-2xl text-navy/70">
+                      {i + 1}
+                    </span>
+                    <span
+                      className={`relative flex h-[108px] w-[108px] items-center justify-center overflow-hidden rounded-full bg-white ${
+                        i === 0
+                          ? "shadow-[0_18px_40px_-18px_rgba(11,31,58,0.35)]"
+                          : "border border-dashed border-navy/25"
+                      }`}
+                    >
+                      <Image
+                        src={stepImage(item.icon)}
+                        alt={`${item.title} illustration`}
+                        fill
+                        unoptimized
+                        className="object-cover"
+                        sizes="108px"
+                      />
+                    </span>
+                  </div>
+                  <h3 className="font-display text-xl text-navy">{item.title}</h3>
+                  <p className="mt-2 max-w-[240px] text-sm leading-relaxed text-muted">{item.body}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile / tablet */}
+        <div className="mt-12 space-y-8 lg:hidden">
           {recruitmentProcess.items.map((item, i) => (
-            <Reveal key={item.title} delay={i * 90}>
-              <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-navy p-6 text-white shadow-[0_22px_50px_-30px_rgba(11,31,58,0.55)]">
-                <div
-                  className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl ${
-                    item.tone === "gold"
-                      ? "bg-gold text-navy-deep"
-                      : item.tone === "foam"
-                        ? "bg-white/10 text-gold-soft ring-1 ring-white/20"
-                        : "bg-white/10 text-gold-soft ring-1 ring-gold/40"
-                  }`}
-                >
-                  <StepIcon type={item.icon} />
+            <Reveal key={item.title} delay={i * 70}>
+              <article className="flex items-start gap-4">
+                <div className="relative flex h-[88px] w-[88px] shrink-0 items-center justify-center">
+                  <span className="absolute -left-0.5 -top-0.5 font-display text-lg text-navy/70">
+                    {i + 1}
+                  </span>
+                  <span
+                      className={`relative flex h-[76px] w-[76px] items-center justify-center overflow-hidden rounded-full bg-white ${
+                      i === 0
+                        ? "shadow-[0_14px_30px_-16px_rgba(11,31,58,0.35)]"
+                        : "border border-dashed border-navy/25"
+                    }`}
+                  >
+                      <Image
+                        src={stepImage(item.icon)}
+                        alt={`${item.title} illustration`}
+                        fill
+                        unoptimized
+                        className="object-cover"
+                        sizes="76px"
+                      />
+                  </span>
                 </div>
-                <p className="text-xs font-semibold tracking-[0.16em] text-gold-soft">
-                  Step {i + 1}
-                </p>
-                <h3 className="mt-2 font-display text-2xl text-white">{item.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-white/70">{item.body}</p>
-                <ul className="mt-5 space-y-2 border-t border-white/15 pt-4">
-                  {item.badges.map((badge) => (
-                    <li key={badge}>
-                      <span
-                        className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold ${
-                          item.tone === "gold"
-                            ? "bg-gold/20 text-gold-soft"
-                            : item.tone === "foam"
-                              ? "bg-white/10 text-white/90 ring-1 ring-white/15"
-                              : "bg-white/8 text-white/85 ring-1 ring-white/10"
-                        }`}
-                      >
-                        <span
-                          className={`h-1.5 w-1.5 rounded-full ${
-                            item.tone === "gold" ? "bg-gold" : "bg-gold-soft"
-                          }`}
-                        />
-                        {badge}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="pt-2">
+                  <h3 className="font-display text-xl text-navy">{item.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted">{item.body}</p>
+                </div>
               </article>
             </Reveal>
           ))}

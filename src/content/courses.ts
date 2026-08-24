@@ -42,6 +42,29 @@ export const courseCategories: CourseCategory[] = [
   "Crash",
 ];
 
+export const coursesHeroStats = [
+  {
+    value: "6",
+    label: "Programs",
+    body: "IMUCET, DNS, foundation, crash, and more — pick the track that fits your goal.",
+  },
+  {
+    value: "Live + LMS",
+    label: "Learning mode",
+    body: "Live classes plus recordings and progress tracking inside the private LMS.",
+  },
+  {
+    value: "Mocks",
+    label: "Exam practice",
+    body: "Topic tests and full-length IMU-CET style mocks with analytics.",
+  },
+  {
+    value: "Mentor",
+    label: "Guidance",
+    body: "Counsellors and mentors through selection rounds and sponsorship prep.",
+  },
+];
+
 export const coursesPage = {
   eyebrow: "All courses",
   title: "Programs built for Merchant Navy outcomes",

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { howItWorksPage, lmsStrip } from "@/content/how-it-works";
+import { howItWorksHeroStats, howItWorksPage, lmsStrip } from "@/content/how-it-works";
 import { site } from "@/content/site";
 import { BeyondCourses } from "@/components/how-it-works/BeyondCourses";
 import { HowFaq } from "@/components/how-it-works/HowFaq";
@@ -11,14 +11,15 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { HeroOrbs } from "@/components/ui/HeroOrbs";
 import { Reveal } from "@/components/ui/Reveal";
+import { StatsCarousel } from "@/components/ui/StatsCarousel";
 
 export function HowItWorksPageView() {
   return (
     <>
-      <section className="relative flex min-h-[calc(100svh-4.25rem)] overflow-hidden sea-grid text-white">
+      <section className="relative flex min-h-[calc(100svh-4.25rem)] flex-col overflow-hidden sea-grid text-white">
         <div className="pointer-events-none absolute inset-0 wave-fade" aria-hidden />
         <HeroOrbs />
-        <Container className="relative flex w-full flex-col justify-center py-12 lg:py-16">
+        <Container className="relative flex flex-1 flex-col justify-center py-12 lg:py-16">
           <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
             <div>
               <nav className="hero-enter text-sm text-white/55">
@@ -44,17 +45,6 @@ export function HowItWorksPageView() {
                   Browse courses
                 </ButtonLink>
               </div>
-
-              <ol className="hero-enter hero-enter-delay-5 mt-10 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-white/55">
-                {["Enquire", "Enrol", "Learn", "Practice", "Guidance"].map((label, i) => (
-                  <li key={label} className="flex items-center gap-2">
-                    {i > 0 ? <span className="text-gold/70">→</span> : null}
-                    <span className="rounded-full bg-white/5 px-3 py-1.5 ring-1 ring-white/10">
-                      {label}
-                    </span>
-                  </li>
-                ))}
-              </ol>
             </div>
 
             <div className="hero-panel-enter relative mx-auto hidden w-full max-w-md lg:block lg:max-w-none">
@@ -72,6 +62,10 @@ export function HowItWorksPageView() {
             </div>
           </div>
         </Container>
+
+        <div className="hero-enter hero-enter-delay-5 relative mt-4 sm:mt-6">
+          <StatsCarousel items={howItWorksHeroStats} />
+        </div>
       </section>
 
       {/* What we offer — wavy 7-step journey */}

@@ -27,6 +27,81 @@ export const aboutStory = {
   ],
 };
 
+export const aboutStoryGallery = [
+  {
+    image: "/assets/story-harsh.png",
+    label: "Harsh Vardhan",
+    caption: "Sponsored · Anglo-Eastern",
+    clip: "https://videos.pexels.com/video-files/2169880/2169880-sd_640_360_30fps.mp4",
+  },
+  {
+    image: "/assets/career-merchant-navy.png",
+    label: "Life at sea",
+    caption: "The career you're building toward",
+    clip: "https://videos.pexels.com/video-files/3571264/3571264-hd_1280_720_30fps.mp4",
+  },
+  {
+    image: "/assets/story-charu.png",
+    label: "Charu Bhardwaj",
+    caption: "Sponsored · Synergy Group",
+    clip: "https://videos.pexels.com/video-files/3209298/3209298-sd_640_360_25fps.mp4",
+  },
+  {
+    image: "/assets/why-seapath-learning.png",
+    label: "Live learning",
+    caption: "Classroom focus, real practice",
+    clip: "https://videos.pexels.com/video-files/5377684/5377684-sd_640_360_25fps.mp4",
+  },
+  {
+    image: "/assets/story-shrishti.png",
+    label: "Shrishti Yadav",
+    caption: "AIR pathway · Anglo-Eastern",
+    clip: "https://videos.pexels.com/video-files/3195394/3195394-sd_640_360_25fps.mp4",
+  },
+  {
+    image: "/assets/why-seapath-mentors.png",
+    label: "Mentors",
+    caption: "Guidance from people who've been there",
+    clip: "https://videos.pexels.com/video-files/1093662/1093662-sd_640_360_30fps.mp4",
+  },
+  {
+    image: "/assets/hero-merchant-navy.png",
+    label: "On the water",
+    caption: "From prep to the bridge",
+    clip: "https://videos.pexels.com/video-files/2040075/2040075-sd_640_360_24fps.mp4",
+  },
+  {
+    image: "/assets/follow-learning.png",
+    label: "Study hours",
+    caption: "Mocks, drills, and LMS",
+    clip: "https://videos.pexels.com/video-files/857195/857195-sd_640_360_25fps.mp4",
+  },
+  {
+    image: "/assets/why-seapath-career.png",
+    label: "Outcomes",
+    caption: "Ranks, sponsorships, next steps",
+    clip: "https://videos.pexels.com/video-files/3141207/3141207-sd_640_360_25fps.mp4",
+  },
+  {
+    image: "/assets/why-seapath-main.png",
+    label: "One pathway",
+    caption: "Learn → Practice → Prove → Convert",
+    clip: "https://videos.pexels.com/video-files/2169880/2169880-sd_640_360_30fps.mp4",
+  },
+  {
+    image: "/assets/results-celebration-bg.png",
+    label: "Results",
+    caption: "When preparation meets opportunity",
+    clip: "https://videos.pexels.com/video-files/3571264/3571264-hd_1280_720_30fps.mp4",
+  },
+  {
+    image: "/assets/beyond-lms.png",
+    label: "On the LMS",
+    caption: "Classes, recordings, progress",
+    clip: "https://videos.pexels.com/video-files/5377684/5377684-sd_640_360_25fps.mp4",
+  },
+];
+
 export const aboutStats = [
   { value: "5,000+", label: "Students guided" },
   { value: "2,000+", label: "Officers pathway" },

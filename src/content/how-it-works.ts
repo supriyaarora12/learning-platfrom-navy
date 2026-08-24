@@ -5,6 +5,34 @@ export const howItWorksPage = {
     "A clear Merchant Navy path — from free checks and enrolment to live learning, mocks, sponsorship guidance, and LMS access.",
 };
 
+export const howItWorksHeroStats = [
+  {
+    value: "Free tools",
+    label: "Enquire",
+    body: "Check eligibility basics, then enquire or start a trial so we can map your year and goal.",
+  },
+  {
+    value: "LMS",
+    label: "Enrol",
+    body: "Batch confirmation, LMS login, and orientation with a clear study plan.",
+  },
+  {
+    value: "Live",
+    label: "Learn",
+    body: "Live classes, recordings, and mentor-led doubt support on IMU-CET topics.",
+  },
+  {
+    value: "Mocks",
+    label: "Practice",
+    body: "Topic tests, full-length mocks, and analytics so revision stays targeted.",
+  },
+  {
+    value: "Mentor",
+    label: "Guidance",
+    body: "Sponsorship prep, interview labs, and pathway clarity until you're selection-ready.",
+  },
+];
+
 /** Journey steps — Marine Edge pathway */
 export const journeySteps = [
   {
