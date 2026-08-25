@@ -7,17 +7,35 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 
 type Stream = "PCM" | "PCB" | "Commerce" | "Engineering" | "Other";
 
+/** Platform form range — Merchant Navy aspirants; not program-specific caps */
+const AGE_MIN = 15;
+const AGE_MAX = 40;
+
 export function EligibilityTool() {
   const [age, setAge] = useState("");
   const [stream, setStream] = useState<Stream>("PCM");
   const [marks, setMarks] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [ageError, setAgeError] = useState("");
+
+  function validateAge(value: string): string {
+    if (value.trim() === "") return "Age is required.";
+    const a = Number(value);
+    if (!Number.isFinite(a) || !Number.isInteger(a)) {
+      return "Enter a whole number for age.";
+    }
+    if (a < AGE_MIN || a > AGE_MAX) {
+      return `Age must be between ${AGE_MIN} and ${AGE_MAX} years for Merchant Navy pathways.`;
+    }
+    return "";
+  }
 
   const results = useMemo(() => {
     if (!submitted) return [];
     const a = Number(age);
     const m = Number(marks);
     if (!Number.isFinite(a) || !Number.isFinite(m)) return [];
+    if (a < AGE_MIN || a > AGE_MAX) return [];
 
     return eligibilityPrograms.map((program) => {
       const ageOk = a >= program.minAge && a <= program.maxAge;
@@ -32,6 +50,12 @@ export function EligibilityTool() {
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
+    const err = validateAge(age);
+    setAgeError(err);
+    if (err) {
+      setSubmitted(false);
+      return;
+    }
     setSubmitted(true);
   }
 
@@ -40,25 +64,45 @@ export function EligibilityTool() {
       <form
         onSubmit={onSubmit}
         className="flex h-full flex-col rounded-2xl border border-line bg-white p-5 sm:p-6"
+        noValidate
       >
         <h3 className="font-display text-xl text-navy sm:text-2xl">Check eligibility</h3>
         <p className="mt-1 text-sm text-muted">Indicative match for common pathways.</p>
 
-        <div className="mt-4 grid flex-1 gap-3 content-start">
+        <div className="mt-4 grid flex-1 content-start gap-3">
           <label className="block text-sm">
             <span className="mb-1 block font-medium text-navy">Age (years)</span>
             <input
               type="number"
-              min={15}
-              max={40}
+              min={AGE_MIN}
+              max={AGE_MAX}
+              step={1}
+              inputMode="numeric"
               required
               value={age}
+              aria-invalid={ageError ? true : undefined}
+              aria-describedby={ageError ? "eligibility-age-error" : undefined}
               onChange={(e) => {
-                setAge(e.target.value);
+                const next = e.target.value;
+                setAge(next);
                 setSubmitted(false);
+                if (ageError) setAgeError(validateAge(next));
               }}
-              className="w-full rounded-md border border-line bg-foam px-3 py-2 outline-none focus:border-navy"
+              onBlur={() => {
+                if (age.trim() !== "") setAgeError(validateAge(age));
+              }}
+              className={`w-full rounded-md border bg-foam px-3 py-2 outline-none focus:border-navy ${
+                ageError ? "border-red-400" : "border-line"
+              }`}
             />
+            <span className="mt-1 block text-[11px] text-muted">
+              Allowed range: {AGE_MIN}–{AGE_MAX} years
+            </span>
+            {ageError ? (
+              <span id="eligibility-age-error" className="mt-1 block text-xs font-medium text-red-600">
+                {ageError}
+              </span>
+            ) : null}
           </label>
 
           <label className="block text-sm">

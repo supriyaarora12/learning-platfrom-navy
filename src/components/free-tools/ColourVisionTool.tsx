@@ -20,22 +20,22 @@ function mulberry32(seed: number) {
 function buildPlateDots(seed: number, digitColor: string, bgA: string, bgB: string): Dot[] {
   const rand = mulberry32(seed);
   const dots: Dot[] = [];
-  for (let i = 0; i < 180; i++) {
+  for (let i = 0; i < 165; i++) {
     const angle = rand() * Math.PI * 2;
     const radius = Math.sqrt(rand()) * 46;
     dots.push({
       cx: 50 + Math.cos(angle) * radius,
       cy: 50 + Math.sin(angle) * radius,
-      r: 1.6 + rand() * 2.2,
+      r: 1.5 + rand() * 2,
       fill: rand() > 0.45 ? bgA : bgB,
     });
   }
-  for (let i = 0; i < 70; i++) {
-    const t = rand();
+  // Soft accent dots around the numeral band (support, don't bury the number)
+  for (let i = 0; i < 36; i++) {
     dots.push({
-      cx: 35 + t * 30 + (rand() - 0.5) * 8,
-      cy: 28 + rand() * 44,
-      r: 1.8 + rand() * 2,
+      cx: 38 + rand() * 24,
+      cy: 34 + rand() * 32,
+      r: 1.4 + rand() * 1.6,
       fill: digitColor,
     });
   }
@@ -43,10 +43,10 @@ function buildPlateDots(seed: number, digitColor: string, bgA: string, bgB: stri
 }
 
 const plateThemes = [
-  { digit: "#2d6a4f", bgA: "#e76f51", bgB: "#f4a261" },
-  { digit: "#bc4749", bgA: "#606c38", bgB: "#a7c957" },
-  { digit: "#1d3557", bgA: "#e9c46a", bgB: "#f4a261" },
-  { digit: "#6a994e", bgA: "#bc4749", bgB: "#e76f51" },
+  { digit: "#1b4332", bgA: "#e76f51", bgB: "#f4a261" },
+  { digit: "#9b2226", bgA: "#606c38", bgB: "#a7c957" },
+  { digit: "#0d1b2a", bgA: "#e9c46a", bgB: "#f4a261" },
+  { digit: "#386641", bgA: "#bc4749", bgB: "#e76f51" },
 ];
 
 /** Easy multiple-choice options — correct answer + close distractors */
@@ -85,16 +85,17 @@ function IshiharaPlate({ plateIndex, answer }: { plateIndex: number; answer: str
         <g clipPath={`url(#plate-clip-${plateIndex})`}>
           <circle cx="50" cy="50" r="48" fill="#f1faee" />
           {dots.map((d, i) => (
-            <circle key={i} cx={d.cx} cy={d.cy} r={d.r} fill={d.fill} opacity={0.92} />
+            <circle key={i} cx={d.cx} cy={d.cy} r={d.r} fill={d.fill} opacity={0.9} />
           ))}
           <text
             x="50"
-            y="58"
+            y="59"
             textAnchor="middle"
-            fontSize="36"
-            fontWeight="700"
+            fontSize="42"
+            fontWeight="800"
             fill={theme.digit}
-            opacity="0.62"
+            opacity="0.9"
+            letterSpacing="1"
             style={{ fontFamily: "Georgia, serif" }}
           >
             {answer}
