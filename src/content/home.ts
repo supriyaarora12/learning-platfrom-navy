@@ -196,7 +196,7 @@ export const coursesPreview = {
   items: [
     {
       title: "IMUCET Complete",
-      body: "Live + recorded classes, topic tests, and full-length mocks for IMU-CET.",
+      body: "Full IMU-CET prep with live teaching, recordings, and rank-focused practice.",
       href: "/courses/imucet-complete",
       tag: "Most popular",
       cta: "View course",
@@ -204,10 +204,15 @@ export const coursesPreview = {
       imageAlt: "IMUCET preparation with SeaPath",
       price: 14999,
       originalPrice: 24999,
+      highlights: [
+        "Live classes + recording library",
+        "Weekly topic tests & full mocks",
+        "LMS analytics & doubt support",
+      ],
     },
     {
       title: "DNS & Sponsorship Prep",
-      body: "Company patterns, interview drills, and guidance through selection rounds.",
+      body: "Company patterns, interview labs, and guidance through selection rounds.",
       href: "/courses/dns-sponsorship-prep",
       tag: "Career track",
       cta: "View course",
@@ -215,10 +220,15 @@ export const coursesPreview = {
       imageAlt: "DNS and sponsorship preparation",
       price: 9999,
       originalPrice: 15999,
+      highlights: [
+        "Company-wise written practice",
+        "Mock interviews with feedback",
+        "DNS pathway & document help",
+      ],
     },
     {
       title: "Crash Revision",
-      body: "Focused revision blocks and analytics when the exam window is close.",
+      body: "Short, focused revision when the exam window is close and scores need a lift.",
       href: "/courses/crash-revision",
       tag: "Fast track",
       cta: "View course",
@@ -226,6 +236,11 @@ export const coursesPreview = {
       imageAlt: "Crash revision for IMU-CET",
       price: 5999,
       originalPrice: 9999,
+      highlights: [
+        "High-yield revision sprints",
+        "Daily / alternate-day mocks",
+        "Error clinics & exam strategy",
+      ],
     },
   ],
 };

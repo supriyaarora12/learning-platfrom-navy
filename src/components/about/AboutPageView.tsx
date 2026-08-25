@@ -22,6 +22,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { StatsCarousel } from "@/components/ui/StatsCarousel";
 import { AboutTimeline } from "@/components/about/AboutTimeline";
 import { JourneyFlipCards } from "@/components/about/JourneyFlipCards";
+import { PartnersVerticalLoop } from "@/components/about/PartnersVerticalLoop";
 import { StoriesGallery } from "@/components/about/StoriesGallery";
 import { SocialIcon } from "@/components/contact/SocialLinks";
 
@@ -334,104 +335,117 @@ export function AboutPageView() {
       </section>
 
       {/* Partners */}
-      <section className="section-pad bg-white">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow={aboutPartners.eyebrow}
-              title={aboutPartners.title}
-              subtitle={aboutPartners.subtitle}
-            />
+      <section className="section-pad bg-navy-deep text-white">
+        <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+          <Reveal variant="left">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-soft">
+              {aboutPartners.eyebrow}
+            </p>
+            <h2 className="mt-4 max-w-xl font-display text-4xl tracking-tight text-white sm:text-5xl lg:leading-[1.1]">
+              {aboutPartners.title}
+            </h2>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-white/65 sm:text-lg">
+              {aboutPartners.subtitle}
+            </p>
           </Reveal>
-          <div className="mt-10 flex flex-wrap gap-3">
-            {aboutPartners.companies.map((company, i) => (
-              <Reveal key={company} delay={(i % 6) * 40}>
-                <span className="rounded-full border border-line bg-foam px-4 py-2 text-sm font-semibold text-navy/80">
-                  {company}
-                </span>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal variant="right" delay={80}>
+            <PartnersVerticalLoop />
+          </Reveal>
         </Container>
       </section>
 
       {/* Why Merchant Navy + Community */}
-      <section className="section-pad bg-white">
-        <Container className="grid gap-8 lg:grid-cols-2">
+      <section className="section-pad bg-[#f4f6f8]">
+        <Container className="grid items-stretch gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
           <Reveal variant="left">
-            <div className="h-full rounded-2xl border border-line bg-foam/60 p-6 sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+            <div className="flex h-full flex-col rounded-3xl bg-white p-7 shadow-[0_18px_40px_-28px_rgba(11,31,58,0.28)] sm:p-10">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
                 {aboutCareer.eyebrow}
               </p>
-              <h2 className="mt-3 font-display text-3xl text-navy">{aboutCareer.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{aboutCareer.body}</p>
-              <ul className="mt-5 space-y-2">
-                {aboutCareer.points.map((p) => (
-                  <li key={p} className="flex gap-2 text-sm text-navy/80">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
+              <h2 className="mt-4 font-display text-4xl leading-tight tracking-tight text-navy sm:text-5xl">
+                Adventure with <span className="text-gold">responsibility</span>
+              </h2>
+              <p className="mt-5 max-w-lg text-base leading-relaxed text-muted">{aboutCareer.body}</p>
+
+              <div className="mt-auto rounded-2xl border border-line/80 p-4 sm:p-5">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-navy-mid">
+                  {aboutCommunity.eyebrow}
+                </p>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {(
+                    [
+                      { key: "youtube" as const, label: "YouTube", hint: "Watch & subscribe" },
+                      { key: "instagram" as const, label: "Instagram", hint: "Follow daily tips" },
+                      { key: "linkedin" as const, label: "LinkedIn", hint: "Career updates" },
+                      { key: "facebook" as const, label: "Facebook", hint: "Join the community" },
+                    ] as const
+                  ).map((item) => (
+                    <a
+                      key={item.key}
+                      href={site.social[item.key]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-3 rounded-xl border border-line bg-white px-3 py-2.5 shadow-sm transition hover:border-navy/20 hover:shadow-md"
+                    >
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-foam text-navy">
+                        <SocialIcon name={item.key} className="h-4 w-4" />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-sm font-semibold text-navy">{item.label}</span>
+                        <span className="mt-0.5 block text-[11px] text-muted">{item.hint}</span>
+                      </span>
+                      <span
+                        aria-hidden
+                        className="ml-auto text-navy/30 transition group-hover:translate-x-0.5 group-hover:text-gold"
+                      >
+                        →
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </Reveal>
+
           <Reveal variant="right" delay={100}>
-            <div className="flex h-full flex-col rounded-2xl bg-navy p-6 text-white sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-soft">
-                {aboutCommunity.eyebrow}
-              </p>
-              <h2 className="mt-3 font-display text-3xl">{aboutCommunity.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-white/70">{aboutCommunity.subtitle}</p>
-
-              <div className="mt-8 grid flex-1 gap-3 sm:grid-cols-2">
-                <a
-                  href={site.social.youtube}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 rounded-xl bg-white/5 p-3.5 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-white/25"
+            <div className="flex h-full flex-col gap-4">
+              {aboutCareer.points.map((point, i) => (
+                <article
+                  key={point}
+                  className="flex flex-1 items-center gap-4 rounded-3xl bg-white p-5 shadow-[0_14px_32px_-24px_rgba(11,31,58,0.3)] sm:gap-5 sm:p-6"
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#FF0000] text-white shadow-[0_8px_20px_-8px_rgba(255,0,0,0.7)]">
-                    <SocialIcon name="youtube" className="h-5 w-5" />
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e8eef6] text-navy">
+                    {i === 0 ? (
+                      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.7" />
+                        <path d="M3 12h18M12 3c2.8 2.6 4.2 5.7 4.2 9S14.8 18.4 12 21c-2.8-2.6-4.2-5.7-4.2-9S9.2 5.6 12 3Z" stroke="currentColor" strokeWidth="1.7" />
+                      </svg>
+                    ) : i === 1 ? (
+                      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
+                        <path d="M8 16h8M10 12h4M12 8h.01" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                        <path d="M7 20h10l-1.2-3.2A3 3 0 0 0 13 15h-2a3 3 0 0 0-2.8 1.8L7 20Z" stroke="currentColor" strokeWidth="1.7" />
+                        <path d="M12 4.2 13.2 6.8 16 7.2 14 9.1 14.5 12 12 10.7 9.5 12 10 9.1 8 7.2 10.8 6.8 12 4.2Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.7" />
+                        <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.7" />
+                        <path d="M12 4v2.5M12 17.5V20M4 12h2.5M17.5 12H20" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+                      </svg>
+                    )}
                   </span>
-                  <span className="min-w-0">
-                    <span className="block text-sm font-semibold text-white">YouTube</span>
-                    <span className="mt-0.5 block text-xs text-white/55">Watch & subscribe</span>
-                  </span>
-                  <span
-                    aria-hidden
-                    className="ml-auto text-white/35 transition group-hover:translate-x-0.5 group-hover:text-gold-soft"
-                  >
-                    →
-                  </span>
-                </a>
-
-                <a
-                  href={site.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 rounded-xl bg-white/5 p-3.5 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-white/25"
-                >
-                  <span
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-white shadow-[0_8px_20px_-8px_rgba(225,48,108,0.65)]"
-                    style={{
-                      background:
-                        "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
-                    }}
-                  >
-                    <SocialIcon name="instagram" className="h-5 w-5" />
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-sm font-semibold text-white">Instagram</span>
-                    <span className="mt-0.5 block text-xs text-white/55">Follow daily tips</span>
-                  </span>
-                  <span
-                    aria-hidden
-                    className="ml-auto text-white/35 transition group-hover:translate-x-0.5 group-hover:text-gold-soft"
-                  >
-                    →
-                  </span>
-                </a>
-              </div>
+                  <div className="min-w-0">
+                    <h3 className="font-display text-lg text-navy sm:text-xl">{point}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">
+                      {i === 0
+                        ? "See the world, meet new cultures, and build a truly global outlook."
+                        : i === 1
+                          ? "A structured career ladder that rewards performance and commitment."
+                          : "Leadership, teamwork, and technical skills that open doors beyond the sea."}
+                    </p>
+                  </div>
+                </article>
+              ))}
             </div>
           </Reveal>
         </Container>

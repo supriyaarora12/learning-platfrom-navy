@@ -10,9 +10,12 @@ function chunkRows(list: string[], rows: number) {
 
 function PartnerCard({ name }: { name: string }) {
   return (
-    <div className="flex shrink-0 items-center gap-3 rounded-2xl border border-white/80 bg-white px-5 py-3.5 shadow-[0_12px_32px_-12px_rgba(20,51,92,0.35)] ring-1 ring-[#c5d8ec]/60">
-      <PartnerIcon name={name} />
-      <span className="whitespace-nowrap text-sm font-semibold tracking-tight text-navy">
+    <div className="flex shrink-0 items-center gap-3 px-7 py-2.5 sm:px-9">
+      <PartnerIcon
+        name={name}
+        className="!h-12 !w-12 !rounded-xl !bg-transparent !ring-0 sm:!h-14 sm:!w-14 [&_img]:!h-10 [&_img]:!w-10 sm:[&_img]:!h-11 sm:[&_img]:!w-11"
+      />
+      <span className="whitespace-nowrap text-xs font-medium tracking-wide text-navy/70 sm:text-sm">
         {name}
       </span>
     </div>
@@ -35,7 +38,7 @@ function MarqueeRow({
   return (
     <div className="flex overflow-hidden py-1.5">
       <div
-        className={`flex w-max gap-4 ${anim}`}
+        className={`flex w-max gap-6 sm:gap-8 ${anim}`}
         style={{ animationDuration: `${duration}s` }}
       >
         {track.map((company, i) => (
@@ -47,7 +50,7 @@ function MarqueeRow({
 }
 
 export function Partners() {
-  const [row1, row2, row3] = chunkRows(partners.companies, 3);
+  const [row1, row2] = chunkRows(partners.companies, 2);
 
   return (
     <section className="relative overflow-hidden section-pad bg-[#eef4fa]">
@@ -86,10 +89,9 @@ export function Partners() {
           aria-hidden
         />
 
-        <div className="space-y-3">
-          <MarqueeRow companies={row1} direction="left" duration={40} />
-          <MarqueeRow companies={row2} direction="right" duration={48} />
-          <MarqueeRow companies={row3} direction="left" duration={44} />
+        <div className="space-y-4 sm:space-y-5">
+          <MarqueeRow companies={row1} direction="left" duration={44} />
+          <MarqueeRow companies={row2} direction="right" duration={50} />
         </div>
       </div>
     </section>
